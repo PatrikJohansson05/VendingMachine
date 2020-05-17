@@ -10,12 +10,12 @@ public class ImplementVendingMachine implements VendingMachine {
     private int[] denominations = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000};
 
     Product[] product = {
-            new Drink("Coca Cola", 25, 139, "330 ml"),
-            new Drink("Fanta Orange", 22, 165, "330 ml"),
-            new Fruit("Apple", 12, 52),
-            new Fruit("Pear", 15, 57),
-            new Snack("Snickers Bar", 17, 280),
-            new Snack("Mars bar", 17, 228),
+            new Drink("Coca Cola", 25, 139, "330 ml", 1),
+            new Drink("Fanta Orange", 22, 165, "330 ml", 2),
+            new Fruit("Apple", 12, 52, 3),
+            new Fruit("Pear", 15, 57, 4),
+            new Snack("Snickers Bar", 17, 280, 5),
+            new Snack("Mars bar", 17, 228, 6),
     };
 
 
@@ -60,18 +60,36 @@ public class ImplementVendingMachine implements VendingMachine {
     }
 
     public String[] getProducts() {
-        return null;
-        }
-        
+        String[] products = new String[product.length];
+        for (int i = 0; i <product.length ; i++) {
+            products[i] = product[i].getName();
+        }return products;
+    }
+
     public String getDescription(int productNumber){
-        String description = product.toString();
-        System.out.println(description);
-        return description;
+        String choice = null;
+        switch(productNumber){
+            case 1:
+                choice = product[0].examine();
+                break;
+            case 2:
+                choice = product[1].examine();
+                break;
+            case 3:
+                choice = product[2].examine();
+            case 4:
+                choice = product[3].examine();
+            case 5:
+                choice = product[4].examine();
+            case 6:
+                choice = product[5].examine();
+        }
+        return choice;
         }
 
     public int endSession(){
+        moneyPool = 0;
         return 0;
     }
-
 
 }

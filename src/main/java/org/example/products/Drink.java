@@ -4,8 +4,8 @@ public class Drink extends Product {
 
     private String volume;
 
-    public Drink(String name, int price, int calories, String volume){
-        super(name, price, calories);
+    public Drink(String name, int price, int calories, String volume, int productNumber){
+        super(name, price, calories, productNumber);
         this.volume = volume;
     }
 
@@ -16,10 +16,10 @@ public class Drink extends Product {
     public void setVolume(String volume) {
         this.volume = volume;
     }
-    @Override
+/*    @Override
     String examine() {
         return getName() + " " + getVolume() + " " + getCalories() + " " + getPrice();
-    }
+    } */
     @Override
     public void use() {
         System.out.println("You drink a refreshing " + getName() + "!");
